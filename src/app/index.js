@@ -103,6 +103,7 @@ var WillComponent = React.createClass({
     console.log(this.state.willArray);
     this.setState({
       willArray : this.state.willArray
+
     });
   }
 
