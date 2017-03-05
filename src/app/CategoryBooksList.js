@@ -4,9 +4,9 @@ var Book = require('./Book');
 
 var CategoryBooksList = React.createClass({
   render: function(){
-    var list_of_books = _.map(this.props.books, function(book,key){
+          var list_of_books = _.map(this.props.books, function(book,key){
       return (
-        <Book name={book.name} status={book.status} key={key}/>
+        <Book title={book.title} status={book.status} key={key}/>
       )
     })
 

@@ -23,14 +23,17 @@ var data = [
     status: "finished_reading"
   },
 
+  {
+    title: "f",
+    status: "dont_want_read"
+  },
+
 ];
 
 var ManageBooks = React.createClass({
   render : function(){
     var status_books_dict = _.groupBy(data, 'status');
-    console.log(status_books_dict);
     var category_list = _.map(status_books_dict, function(filtered_books, key){
-      console.log(key +" "+ filtered_books);
       return <CategoryBooksList books={filtered_books} status={key} key={key} />
     })
 
