@@ -5,7 +5,6 @@ var request = require('superagent');
 
 import _ from 'lodash';
 
-
 var ManageBooks = React.createClass({
 
       getInitialState: function(){
@@ -15,22 +14,34 @@ var ManageBooks = React.createClass({
      componentDidMount: function(){
        var self = this;
        request
-          .get('http://127.0.0.1:8000/books/')
+          .get('http://localhost:8000/books/')
           .end(function(err, res){
              var data = res.body;
              self.setState({data: data});
           });
      },
 
+     handleBookAddition: function(){
+       var self = this;
+       request
+       .get('http://localhost:8000/books/')
+       .end(function(err, res){
+         var data = res.body;
+         self.setState({data: data});
+       });
+     },
+
      getBooks: function() {
        if(this.state.data) {
+         var self = this;
          var status_books_dict = _.groupBy(this.state.data, 'status');
          var category_list = _.map(status_books_dict, function(filtered_books, key){
-           return <CategoryBooksList books={filtered_books} status={key} key={key} />
+           return <CategoryBooksList books={filtered_books} status={key} addBook={self.handleBookAddition} key={key} />
          })
          return category_list;
        }
      },
+
 
     render : function(){
       return(
