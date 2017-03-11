@@ -7,6 +7,7 @@ Setps to Run the server
 ---------------------------
 - Create a virtualenv
 - then do pip install requirements.txt
+- Activate virtualenv using following command : source venv/bin/activate
 - then do python manage.py runserver
 
 
