@@ -21,7 +21,7 @@ var ManageBooks = React.createClass({
           });
      },
 
-     handleBookAddition: function(){
+     handleBookUpdate: function(){
        var self = this;
        request
        .get('http://localhost:8000/books/')
@@ -36,12 +36,11 @@ var ManageBooks = React.createClass({
          var self = this;
          var status_books_dict = _.groupBy(this.state.data, 'status');
          var category_list = _.map(status_books_dict, function(filtered_books, key){
-           return <CategoryBooksList books={filtered_books} status={key} addBook={self.handleBookAddition} key={key} />
+           return <CategoryBooksList books={filtered_books} status={key} updateBooks={self.handleBookUpdate} key={key} />
          })
          return category_list;
        }
      },
-
 
     render : function(){
       return(

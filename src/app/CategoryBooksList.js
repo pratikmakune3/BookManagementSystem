@@ -25,15 +25,20 @@ var CategoryBooksList = React.createClass({
             })
           .end(function(err, res){
             if (res.body !== null) {
-              self.props.addBook();
+              self.props.updateBooks();
             }
           });
       },
 
+      handleDelete: function(){
+        this.props.updateBooks();
+      },
+
       render: function(){
+        var self = this;
               var list_of_books = _.map(this.props.books, function(book,key){
                 return (
-                  <Book name={book.name} status={book.status} key={key}/>
+                  <Book name={book.name} status={book.status} id={book.id} handleDelete={self.handleDelete} key={key}/>
                 )
               })
 
